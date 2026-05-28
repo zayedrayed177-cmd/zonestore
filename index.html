@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zone Fight Store | متجر زون فايت</title>
+    <style>
+        /* إعدادات الألوان العامة والأناقة */
+        :root {
+            --main-green: #1db954;
+            --dark-green: #147a37;
+            --bg-black: #0b0c10;
+            --card-bg: #1f2833;
+            --text-white: #ffffff;
+            --text-gray: #c5c6c7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            padding-bottom: 50px;
+        }
+
+        /* الهيدر وشعار الموقع */
+        header {
+            background: linear-gradient(135deg, #000000, #0a1128);
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--main-green);
+            box-shadow: 0 4px 15px rgba(29, 185, 84, 0.3);
+        }
+
+        .logo-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--main-green);
+            box-shadow: 0 0 15px var(--main-green);
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            color: var(--main-green);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(29, 185, 84, 0.5);
+        }
+
+        header p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        /* الحاوية الأساسية للمنتجات */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            color: var(--main-green);
+            border-right: 5px solid var(--main-green);
+            padding-right: 15px;
+            margin: 40px 0 20px 0;
+            font-size: 1.8rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        /* تصميم بطاقة المنتج */
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(29, 185, 84, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--main-green);
+            box-shadow: 0 10px 20px rgba(29, 185, 84, 0.2);
+        }
+
+        .product-image-container {
+            width: 100%;
+            height: 220px;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.08);
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--text-white);
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--main-green);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .product-price span {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            font-weight: normal;
+        }
+
+        .buy-btn {
+            background-color: var(--main-green);
+            color: #000;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            width: 100%;
+        }
+
+        .buy-btn:hover {
+            background-color: var(--dark-green);
+            color: var(--text-white);
+        }
+
+        .buy-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* فوتر المتجر */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            color: var(--text-gray);
+            border-top: 1px solid rgba(29, 185, 84, 0.2);
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color: var(--main-green);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر والشعار -->
+    <header>
+        <img src="logozone.jpg" alt="Zone Fight Logo" class="logo-img">
+        <h1>Zone Fight</h1>
+        <p>المتجر الرسمي لخدمات واشتراكات السيرفر</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- قسم الاشتراكات والخدمات -->
+        <h2 class="section-title">الاشتراكات والخدمات</h2>
+        <div class="products-grid">
+            
+            <!-- Priority 1 month -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="logozone.jpg" alt="Zone Fight" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Priority 1 Month</div>
+                    <div class="product-price">48 <span>ريال</span></div>
+                    <button class="buy-btn" onclick="buyProduct('Priority 1 Month')">شراء الآن</button>
+                </div>
+            </div>
+
+            <!-- StoreMenu 3 Month -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="logozone.jpg" alt="Zone Fight" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">StoreMenu 3 Month</div>
+                    <div class="product-price">90 <span>ريال</span></div>
+                    <button class="buy-btn" onclick="buyProduct('StoreMenu 3 Month')">شراء الآن</button>
+                </div>
+            </div>
+
+            <!-- StoreMenu 1 Month -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="logozone.jpg" alt="Zone Fight" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">StoreMenu 1 Month</div>
+                    <div class="product-price">65 <span>ريال</span></div>
+                    <button class="buy-btn" onclick="buyProduct('StoreMenu 1 Month')">شراء الآن</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- قسم الآيديات -->
+        <h2 class="section-title">قسم الآيديات (IDs)</h2>
+        <div class="products-grid">
+
+            <!-- ايدي رباعي مكرر -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="logozone.jpg" alt="Zone Fight" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">ايدي رباعي مكرر</div>
+                    <div class="product-price">47 <span>ريال</span></div>
+                    <button class="buy-btn" onclick="buyProduct('ايدي رباعي مكرر')">شراء الآن</button>
+                </div>
+            </div>
+
+            <!-- ايدي رباعي -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="logozone.jpg" alt="Zone Fight" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">ايدي رباعي</div>
+                    <div class="product-price">30 <span>ريال</span></div>
+                    <button class="buy-btn" onclick="buyProduct('ايدي رباعي')">شراء الآن</button>
+                </div>
+            </div>
+
+            <!-- ايدي ثنائي مكرر -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="logozone.jpg" alt="Zone Fight" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">ايدي ثنائي مكرر</div>
+                    <div class="product-price">205 <span>ريال</span></div>
+                    <button class="buy-btn" onclick="buyProduct('ايدي ثنائي مكرر')">شراء الآن</button>
+                </div>
+            </div>
+
+            <!-- ايدي ثلاثي ( شعارات قبيلة ) -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="logozone.jpg" alt="Zone Fight" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">ايدي ثلاثي (شعارات قبيلة)</div>
+                    <div class="product-price">160 <span>ريال</span></div>
+                    <button class="buy-btn" onclick="buyProduct('ايدي ثلاثي (شعارات قبيلة)')">شراء الآن</button>
+                </div>
+            </div>
+
+            <!-- ايدي ثلاثي مكرر -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="logozone.jpg" alt="Zone Fight" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">ايدي ثلاثي مكرر</div>
+                    <div class="product-price">100 <span>ريال</span></div>
+                    <button class="buy-btn" onclick="buyProduct('ايدي ثلاثي مكرر')">شراء الآن</button>
+                </div>
+            </div>
+
+            <!-- ايدي ثنائي بالسالب -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="logozone.jpg" alt="Zone Fight" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">ايدي ثنائي بالسالب</div>
+                    <div class="product-price">125 <span>ريال</span></div>
+                    <button class="buy-btn" onclick="buyProduct('ايدي ثنائي بالسالب')">شراء الآن</button>
+                </div>
+            </div>
+
+            <!-- ايدي ثنائي عادي -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="logozone.jpg" alt="Zone Fight" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">ايدي ثنائي عادي</div>
+                    <div class="product-price">145 <span>ريال</span></div>
+                    <button class="buy-btn" onclick="buyProduct('ايدي ثنائي عادي')">شراء الآن</button>
+                </div>
+            </div>
+
+            <!-- ايدي ثنائي مميز -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="logozone.jpg" alt="Zone Fight" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">ايدي ثنائي مميز</div>
+                    <div class="product-price">200 <span>ريال</span></div>
+                    <button class="buy-btn" onclick="buyProduct('ايدي ثنائي مميز')">شراء الآن</button>
+                </div>
+            </div>
+
+            <!-- ايدي ثنائي من 20 وتحت -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="logozone.jpg" alt="Zone Fight" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">ايدي ثنائي من 20 وتحت</div>
+                    <div class="product-price">230 <span>ريال</span></div>
+                    <button class="buy-btn" onclick="buyProduct('ايدي ثنائي من 20 وتحت')">شراء الآن</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>&copy; 2026 جميع الحقوق محفوظة لـ <span>Zone Fight</span></p>
+    </footer>
+
+    <script>
+        // دالة زر الشراء والتنبيه للتوجه إلى روم التذاكر
+        function buyProduct(productName) {
+            alert("لقد اخترت شراء: " + productName + "\n\nالرجاء الانتقال إلى الديسكورد وفتح تذكرة متجر (Ticket) لإتمام الطلب!");
+            
+            // قم بتغيير هذا الرابط إلى رابط روم التذاكر أو السيرفر الخاص بكم
+            var discordRoomLink = "https://discord.gg/YOUR_INVITE_LINK"; 
+            
+            window.open(discordRoomLink, '_blank');
+        }
+    </script>
+</body>
+</html>
